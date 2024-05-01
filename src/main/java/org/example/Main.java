@@ -8,23 +8,30 @@
 
 package org.example;
 
-
-import java.net.http.HttpResponse;
-
 public class Main {
 
     public static void main(String[] args) {
-        JSONPlaceholder jsonPlaceholder = new JSONPlaceholder();
-        System.out.println(jsonPlaceholder.getSinglePost(1));
-        //HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
-        //System.out.println(response.statusCode());
-        //System.out.println(response.body());
-        //System.out.println(response.headers());
+            JSONPlaceholder jsonPlaceholder = new JSONPlaceholder();
+            System.out.println(jsonPlaceholder.getSinglePost(1));
+            //HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
+            //System.out.println(response.statusCode());
+            //System.out.println(response.body());
+            //System.out.println(response.headers());
+
+        JSONPlaceholder jsonPlaceholder1 = new JSONPlaceholder();
+        System.out.println(jsonPlaceholder1.getAllPosts());
+
 
         JSONPlaceholder post = new JSONPlaceholder();
-        boolean response = post.addPost("{\n" +
-               " \"id\": 1,\n" +
-                "}"
-        );
+        String requestBody = "{\n" +
+                " \"userId\": 32,\n" +
+        " \"id\": 87,\n" +
+                " \"title\": \"something\",\n" +
+                " \"body\": \"something\"\n" +
+        "}";
+        boolean answer = post.addPost( requestBody );
+        System.out.println(answer);
+
     }
 }
+
