@@ -1,20 +1,14 @@
 package org.example;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Arrays;
-import java.util.List;
 
 public class JSONPlaceholder {
-    private final String userURL = "https://jsonplaceholder.typicode.com/posts/";
+    private final String userURL = "https://jsonplaceholder.typicode.com/posts";
     private final HttpClient client = HttpClient.newHttpClient();
 
     public HttpResponse<String> getSinglePost(int id) {

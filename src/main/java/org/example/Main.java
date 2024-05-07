@@ -8,29 +8,37 @@
 
 package org.example;
 
+import java.net.http.HttpResponse;
+
 public class Main {
 
     public static void main(String[] args) {
             JSONPlaceholder jsonPlaceholder = new JSONPlaceholder();
-            System.out.println(jsonPlaceholder.getSinglePost(1));
+            System.out.println(jsonPlaceholder.getSinglePost(1).body());
             //HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
             //System.out.println(response.statusCode());
             //System.out.println(response.body());
             //System.out.println(response.headers());
 
         JSONPlaceholder jsonPlaceholder1 = new JSONPlaceholder();
-        System.out.println(jsonPlaceholder1.getAllPosts());
+        System.out.println(jsonPlaceholder1.getAllPosts().body());
 
 
         JSONPlaceholder post = new JSONPlaceholder();
         String requestBody = "{\n" +
-                " \"userId\": 32,\n" +
-        " \"id\": 87,\n" +
-                " \"title\": \"something\",\n" +
-                " \"body\": \"something\"\n" +
-        "}";
+                "  \"userId\": 1,\n" +
+                "  \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\n" +
+                "  \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\n" +
+                "}\n";
         boolean answer = post.addPost( requestBody );
         System.out.println(answer);
+
+        HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
+
+        Post post1 = JSONMapper.convertJSON(response.body());
+        System.out.println(post1);
+
+
 
     }
 }
