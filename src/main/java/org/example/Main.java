@@ -38,6 +38,9 @@ public class Main {
         Post post1 = JSONMapper.convertJSON(response.body());
         System.out.println(post1);
 
+        Post post2 = JSONMapper.mapTo(new Post(), response.body());
+        System.out.println(post2);
+
 
 
     }

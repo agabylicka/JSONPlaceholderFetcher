@@ -1,6 +1,7 @@
 package org.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -17,6 +18,14 @@ public class JSONMapper {
             throw new RuntimeException(e);
         }
         return post;
+    }
+    public static <T> T mapTo(T type, String content) {
+        final T t = null;
+        try {
+            return MAPPER.readValue(content, t);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
