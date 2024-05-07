@@ -10,9 +10,9 @@ public class JSONMapper {
         Post post = new Post();
         try {
             JsonNode node = MAPPER.readTree(postJSON);
-            post.setUserID(Integer.parseInt(node.get("UserID").textValue()));
-            post.setTitle((node.get("Title").textValue()));
-            post.setBody((node.get("Body").textValue()));
+            post.setUserID(Integer.parseInt(node.get("userId").asText()));
+            post.setTitle((node.get("title").textValue()));
+            post.setBody((node.get("body").textValue()));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
