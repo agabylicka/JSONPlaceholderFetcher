@@ -22,7 +22,7 @@ public class JSONMapper {
     public static <T> T mapTo(T type, String content) {
         final T t = null;
         try {
-            return MAPPER.readValue(content, t);
+            return (T) MAPPER.readTree(content);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

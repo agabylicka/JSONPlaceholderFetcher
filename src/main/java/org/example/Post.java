@@ -1,5 +1,6 @@
 package org.example;
 
+import java.net.http.HttpResponse;
 import java.util.Objects;
 
 public class Post {
@@ -8,7 +9,24 @@ public class Post {
     private String title;
     private String body;
 
+    public Post(JSONPlaceholder jsonPlaceholder) {
+        this.jsonPlaceholder = jsonPlaceholder;
+    }
+
+    private JSONPlaceholder jsonPlaceholder;
+
     public Post() {
+
+    }
+
+    public Post getSinglePost(int id) {
+        HttpResponse<String>response = jsonPlaceholder.getSinglePost(id);
+        if(response.statusCode() == 200) {
+            return JSONMapper.convertJSON(response.body());
+
+        } else {
+            throw new RuntimeException();
+        }
 
     }
 

@@ -41,6 +41,9 @@ public class Main {
         Post post2 = JSONMapper.mapTo(new Post(), response.body());
         System.out.println(post2);
 
+        Post post3 = new Post(jsonPlaceholder);
+        System.out.println(post3.getSinglePost(1));
+
 
 
     }
