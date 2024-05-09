@@ -11,13 +11,17 @@ public class JSONPlaceholder {
     private final String userURL = "https://jsonplaceholder.typicode.com/posts";
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public HttpResponse<String> getSinglePost(int id) {
+    public Post getSinglePost(int id) {
         HttpRequest request;
         try {
             request = HttpRequest.newBuilder(new URI(userURL + "/" + id)).GET().build();
 
+
+
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            return response;
+            String body = response.body();
+            Post post = JSONMapper.convertJSON(body);
+            return post;
         } catch (URISyntaxException | IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }

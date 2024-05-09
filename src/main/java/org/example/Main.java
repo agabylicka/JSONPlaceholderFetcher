@@ -14,7 +14,6 @@ public class Main {
 
     public static void main(String[] args) {
             JSONPlaceholder jsonPlaceholder = new JSONPlaceholder();
-            System.out.println(jsonPlaceholder.getSinglePost(1).body());
             //HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
             //System.out.println(response.statusCode());
             //System.out.println(response.body());
@@ -33,16 +32,10 @@ public class Main {
         boolean answer = post.addPost( requestBody );
         System.out.println(answer);
 
-        HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
+        Post response = jsonPlaceholder.getSinglePost(1);
 
-        Post post1 = JSONMapper.convertJSON(response.body());
-        System.out.println(post1);
+        System.out.println(response);
 
-        Post post2 = JSONMapper.mapTo(new Post(), response.body());
-        System.out.println(post2);
-
-        Post post3 = new Post(jsonPlaceholder);
-        System.out.println(post3.getSinglePost(1));
 
 
 

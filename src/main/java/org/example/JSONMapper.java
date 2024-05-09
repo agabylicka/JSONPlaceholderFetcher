@@ -18,14 +18,7 @@ public class JSONMapper {
             throw new RuntimeException(e);
         }
         return post;
-    }
-    public static <T> T mapTo(T type, String content) {
-        final T t = null;
-        try {
-            return (T) MAPPER.readTree(content);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
 }

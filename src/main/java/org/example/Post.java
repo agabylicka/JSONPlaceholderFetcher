@@ -19,17 +19,6 @@ public class Post {
 
     }
 
-    public Post getSinglePost(int id) {
-        HttpResponse<String>response = jsonPlaceholder.getSinglePost(id);
-        if(response.statusCode() == 200) {
-            return JSONMapper.convertJSON(response.body());
-
-        } else {
-            throw new RuntimeException();
-        }
-
-    }
-
     public Post(long userID, long id, String title, String body) {
         this.userID = userID;
         this.id = id;
