@@ -13,14 +13,14 @@ import java.net.http.HttpResponse;
 public class Main {
 
     public static void main(String[] args) {
-            JSONPlaceholder jsonPlaceholder = new JSONPlaceholder();
-            //HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
-            //System.out.println(response.statusCode());
-            //System.out.println(response.body());
-            //System.out.println(response.headers());
+        JSONPlaceholder jsonPlaceholder = new JSONPlaceholder();
+        //HttpResponse<String> response = jsonPlaceholder.getSinglePost(1);
+        //System.out.println(response.statusCode());
+        //System.out.println(response.body());
+        //System.out.println(response.headers());
 
         JSONPlaceholder jsonPlaceholder1 = new JSONPlaceholder();
-        System.out.println(jsonPlaceholder1.getAllPosts().body());
+        System.out.println(jsonPlaceholder1.getAllPosts());
 
 
         JSONPlaceholder post = new JSONPlaceholder();
@@ -29,16 +29,15 @@ public class Main {
                 "  \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\n" +
                 "  \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\n" +
                 "}\n";
-        boolean answer = post.addPost( requestBody );
+        boolean answer = post.addPost(requestBody);
         System.out.println(answer);
 
         Post response = jsonPlaceholder.getSinglePost(1);
 
         System.out.println(response);
 
-
-
-
+        String json = JSONMapper.mapToJSON(response);
+        System.out.println(json);
     }
 }
 

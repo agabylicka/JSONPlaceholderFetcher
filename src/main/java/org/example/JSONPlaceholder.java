@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 
 public class JSONPlaceholder {
     private final String userURL = "https://jsonplaceholder.typicode.com/posts";
@@ -27,16 +28,19 @@ public class JSONPlaceholder {
         }
     }
 
-    public HttpResponse<String> getAllPosts() {
+    public ArrayList<Post> getAllPosts() {
         HttpRequest request;
+        ArrayList<Post> list = new ArrayList<>();
+
         try {
             request = HttpRequest.newBuilder(new URI(userURL)).GET().build();
-
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            return response;
+            System.out.println("test");
+            list = JSONMapper.listPost(response.body());
         } catch (URISyntaxException | IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
+        return list;
     }
 
     public boolean addPost(String post) {
