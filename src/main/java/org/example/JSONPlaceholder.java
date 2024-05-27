@@ -16,9 +16,6 @@ public class JSONPlaceholder {
         HttpRequest request;
         try {
             request = HttpRequest.newBuilder(new URI(userURL + "/" + id)).GET().build();
-
-
-
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             String body = response.body();
             Post post = JSONMapper.convertJSON(body);
