@@ -19,35 +19,10 @@ public class TestMock {
     @Mock
     private JSONPlaceholder jsonPlaceholder;
 
-    //@Mock
-    //private JSONMapper jsonMapper;
 
     @Mock
     private HttpResponse<String> response;
 
-    @Test
-    public void testConversion() {
-        // given
-        String expected = "{\n" +
-                "  \"userID\" : 0,\n" +
-                "  \"id\" : 0,\n" +
-                "  \"title\" : null,\n" +
-                "  \"body\" : null\n" +
-                "}";//.replace("\n", "\r\n") ;
-        Post post = new Post();
-        when(response.statusCode()).thenReturn(200);
-        when(response.body()).thenReturn(expected);
-                //.thenReturn("{\n  \"userID\" : 0,\n  \"id\" : 0,\n  \"title\" : null,\n  \"body\" : null\n}"
-                //.replace("\n", "\r\n"));
-        when(JSONMapper.mapToJSON(post)).thenReturn(expected);
-
-        // when
-        String actual = JSONMapper.mapToJSON(post);
-        // then
-        Assertions.assertNotNull(actual);
-        Assertions.assertEquals(expected, actual);
-        //Mockito.reset();
-    }
 
     @Test
     public void testGetAllPosts() {

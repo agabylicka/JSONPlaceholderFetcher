@@ -40,7 +40,7 @@ public class JSONPlaceholder {
         return list;
     }
 
-    public boolean addPost(String post) {
+    public boolean addPost(Post post) {
         try {
             HttpRequest request = HttpRequest.newBuilder(new URI(userURL))
                     .POST(HttpRequest.BodyPublishers.ofString(java.lang.String.valueOf(post)))

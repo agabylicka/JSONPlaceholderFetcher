@@ -8,7 +8,6 @@
 
 package org.example;
 
-import java.net.http.HttpResponse;
 
 public class Main {
 
@@ -29,7 +28,9 @@ public class Main {
                 "  \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\n" +
                 "  \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\n" +
                 "}\n";
-        boolean answer = post.addPost(requestBody);
+
+        Post post1 = new Post();
+        boolean answer = post.addPost(post1);
         System.out.println(answer);
 
         Post response = jsonPlaceholder.getSinglePost(1);
